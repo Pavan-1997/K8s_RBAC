@@ -72,3 +72,7 @@ Few key points:
 - Role Binding to attach the role created to the user 
 
 - Create Service Account, Role -> Using Role Binding bind them both 
+
+![image](https://github.com/Pavan-1997/K8s_RBAC/assets/32020205/550298aa-1e21-4609-ba05-f1de66a2acfa)
+
+---
