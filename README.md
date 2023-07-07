@@ -160,6 +160,6 @@ kubectl apply -f clusterrolebinding.yml
 
 16. Now perform Step 13.
 
-   You should see as "yes" 
-
-   Now you can do everything in the cluster.
+	   You should see as "yes" 
+	
+	   Now you can do everything in the cluster.
