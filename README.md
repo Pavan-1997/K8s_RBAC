@@ -76,7 +76,7 @@ Few key points:
 ![image](https://github.com/Pavan-1997/K8s_RBAC/assets/32020205/550298aa-1e21-4609-ba05-f1de66a2acfa)
 
 ---
-Performing on Minikube cluster locally.
+# Performing on Minikube cluster locally.
 
 1. Create a K8s Minikube cluster using the commands in OneNote
 
@@ -85,6 +85,8 @@ Performing on Minikube cluster locally.
 ```
 kubectl create ns rbac-test
 ```
+![image](https://github.com/Pavan-1997/K8s_RBAC/assets/32020205/f632fae1-caf1-4447-bbc9-b1a8920d0f5a)
+
 
 3. Create a Service Account within the namespace
 ```
