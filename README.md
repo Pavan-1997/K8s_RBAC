@@ -87,9 +87,9 @@ kubectl create ns rbac-test
 ```
 
 3. Create a Service Account within the namespace
-
+```
 vim serviceaccount.yml
-
+```
  
 4. Apply the created Service Account on cluster
 ```
@@ -102,9 +102,9 @@ kubectl auth can-i --as system:serviceaccount:rbac-test:foo get pods -n rbac-tes
 ```
 
 6. Creating a role 
-
+```
 vi role.yml
-
+```
  
 7. Apply the created role on cluster
 ```
@@ -117,9 +117,9 @@ Still you see as "no" since, we haven't binded it to the serviceaccount
 
 
 9. Create a Role Binding 
-
+```
 vi rolebinding.yml
-
+```
   
 10. Apply the created rolebinding on cluster
 ```
@@ -149,9 +149,9 @@ Output: no
 
 
 14. Create a cluster rolebinding
-
+```
 vi clusterrolebinding.yml
-
+```
 
 15. Apply the created rolebinding on cluster
 ```
