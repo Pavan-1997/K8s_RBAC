@@ -19,8 +19,8 @@ There are 3 important concept in RBAC.
     - Users: These are global, and meant for humans or processes living outside the cluster.
     - Groups: Set of users.
     - Service Accounts: Kubernetes uses service accounts to authenticate and authorize requests by pods to the Kubernetes API server. These are namespaced and meant for intra-cluster processes running inside pods.
-- Resources : Kubernetes API objects which we will operate on.
-- Verbs : The operations which we want to do with our resources.
+- Resources : The set of Kubernetes API Objects available in the cluster are called Resources. For examples, Pods, Deployments, Services, Nodes, PersistentVolumes etc.
+- Verbs : The set of operations that can be executed to the resources are called verbs. For examples, different verbs are get, watch, create, delete. Ultimately all of them are Create, Read, Update or Delete (CRUD) operations.
 
 ClusterRole:
 
