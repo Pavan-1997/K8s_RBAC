@@ -102,6 +102,8 @@ kubectl apply -f serviceaccount.yml
 ```
 kubectl auth can-i --as system:serviceaccount:rbac-test:foo get pods -n rbac-test
 ```
+![image](https://github.com/Pavan-1997/K8s_RBAC/assets/32020205/b364248d-250e-4402-9221-c75eb7814b5d)
+
 
 6. Creating a role 
 ```
@@ -116,6 +118,8 @@ kubectl apply -f role.yml
 8. Once again perform Step 5.
 
 Still you see as "no" since, we haven't binded it to the serviceaccount
+
+![image](https://github.com/Pavan-1997/K8s_RBAC/assets/32020205/eadb9443-8540-4f02-8304-2858c9202e82)
 
 
 9. Create a Role Binding 
@@ -132,6 +136,7 @@ kubectl apply -f rolebinding.yml
 
      You should see as "yes"
 
+![image](https://github.com/Pavan-1997/K8s_RBAC/assets/32020205/9bbf8db3-5182-4789-9dc7-064c2fe83306)
 
 12. ServiceAccount can create pods, deployments like below
 ```
@@ -149,6 +154,8 @@ kubectl auth can-i --as system:serviceaccount:rbac-test:foo create deployments -
 ```
    Output: no
 
+![image](https://github.com/Pavan-1997/K8s_RBAC/assets/32020205/95466ee2-2568-4384-b15a-42afa6f85bb6)
+
 
 14. Create a cluster rolebinding
 ```
@@ -165,3 +172,5 @@ kubectl apply -f clusterrolebinding.yml
 	   You should see as "yes" 
 	
 	   Now you can do everything in the cluster.
+
+![image](https://github.com/Pavan-1997/K8s_RBAC/assets/32020205/1a606d32-5c38-47d7-914c-1924a6a17b64)
