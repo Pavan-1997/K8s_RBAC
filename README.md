@@ -18,3 +18,19 @@ There are 3 important concept in RBAC.
 - Subject : Users, groups or service accounts.
 - Resources : Kubernetes API objects which we will operate on.
 - Verbs : The operations which we want to do with our resources.
+
+ClusterRole:
+
+- ClusterRole works the same as Role, but they are applied to the cluster as a whole.
+- ClusterRoles are not bound to a specific namespace. ClusterRole give access across more than one namespace or all namespaces.
+- After creating a ClusterRole, you assign it to a user or group of users by creating a RoleBinding or ClusterRoleBinding.
+- ClusterRoles are typically used with service accounts.
+
+RoleBinding:
+
+- Role Binding is used for granting permission to a Subject.
+- RoleBinding holds a list of subjects (users, groups, or service accounts), and a reference to the role being granted.
+- Role and RoleBinding are used in namespaced scoped.
+- RoleBinding may reference any Role in the same namespace.
+After you create a binding, you cannot change the Role or ClusterRole that it refers to. If you do want to change the roleRef for a binding, you need to remove the binding object and create a replacement
+
