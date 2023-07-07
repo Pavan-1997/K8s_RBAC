@@ -128,7 +128,7 @@ kubectl apply -f rolebinding.yml
 
 11.  Once again perform Step 5.
 
-You should see as "yes"
+     You should see as "yes"
 
 
 12. ServiceAccount can create pods, deployments like below
@@ -138,14 +138,14 @@ kubectl auth can-i --as system:serviceaccount:rbac-test:foo create pods -n rbac-
 ```
 kubectl auth can-i --as system:serviceaccount:rbac-test:foo create deployments -n rbac-test
 ```
-Output: yes
+   Output: yes
 
 
 13. You can't create a pod in different namespace as we have not assinged with a cluster role
 ```
 kubectl auth can-i --as system:serviceaccount:rbac-test:foo create deployments -n kube-system
 ```
-Output: no
+   Output: no
 
 
 14. Create a cluster rolebinding
@@ -160,6 +160,6 @@ kubectl apply -f clusterrolebinding.yml
 
 16. Now perform Step 13.
 
-You should see as "yes" 
+   You should see as "yes" 
 
-Now you can do everything in the cluster.
+   Now you can do everything in the cluster.
