@@ -43,3 +43,32 @@ ClusterRoleBinding:
 - RoleBinding grants permissions within a specific namespace, whereas a ClusterRoleBinding grants access cluster-wide and to multiple namespaces.
 - ClusterRoleBinding is binding or associating a ClusterRole with a Subject (users, groups, or service accounts).
   
+---
+Few key points:
+
+- RBAC is related to security
+
+- They can be divided into two types of management:
+
+	- Users (If having a K8s cluster locally in Minikube or Kind out of the box we get admin access by default, Kubernetes Adminstrator in production will define access for dev, qe)
+	- Service Accounts (Managing the access for the services in the cluster like malicious pod deleting configmaps,secrets or content related to API server) (These are the YAML files)
+	- Roles/Cluster Roles
+	- Role binding/ Cluster role binding 
+	
+- API Server act as OAuth Server
+	
+- K8s doesn't deal with user management but offloads it to Identity Providers (AWS-IAM, AZURE, Openshift)
+
+- Identity Providers in Organization - SSO, LDAP, Okta
+
+- Identity Brokers (popular) that connect to Providers - Keyclock 
+
+- K8s create a default Service Account at the time of creating POD the apps will be talking to API Server
+
+- Role is a YAML file that has access to resources(secrets, configmap, pods) within a single namespace
+
+- If wants to have across cluster then we create a Cluster Role
+
+- Role Binding to attach the role created to the user 
+
+- Create Service Account, Role -> Using Role Binding bind them both 
