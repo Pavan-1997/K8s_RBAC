@@ -76,3 +76,90 @@ Few key points:
 ![image](https://github.com/Pavan-1997/K8s_RBAC/assets/32020205/550298aa-1e21-4609-ba05-f1de66a2acfa)
 
 ---
+Performing on Minikube cluster locally.
+
+1. Create a K8s Minikube cluster using the commands in OneNote
+
+
+2. Create a namespace
+```
+kubectl create ns rbac-test
+```
+
+3. Create a Service Account within the namespace
+
+vim serviceaccount.yml
+
+ 
+4. Apply the created Service Account on cluster
+```
+kubectl apply -f serviceaccount.yml
+```
+
+5. Check whether the serviceaccount can get the pods in namespace created
+```
+kubectl auth can-i --as system:serviceaccount:rbac-test:foo get pods -n rbac-test
+```
+
+6. Creating a role 
+
+vi role.yml
+
+ 
+7. Apply the created role on cluster
+```
+kubectl apply -f role.yml
+```
+
+8. Once again perform Step 5.
+
+Still you see as "no" since, we haven't binded it to the serviceaccount
+
+
+9. Create a Role Binding 
+
+vi rolebinding.yml
+
+  
+10. Apply the created rolebinding on cluster
+```
+kubectl apply -f rolebinding.yml 
+```
+
+11.  Once again perform Step 5.
+
+You should see as "yes"
+
+
+12. ServiceAccount can create pods, deployments like below
+```
+kubectl auth can-i --as system:serviceaccount:rbac-test:foo create pods -n rbac-test
+```
+```
+kubectl auth can-i --as system:serviceaccount:rbac-test:foo create deployments -n rbac-test
+```
+Output: yes
+
+
+13. You can't create a pod in different namespace as we have not assinged with a cluster role
+```
+kubectl auth can-i --as system:serviceaccount:rbac-test:foo create deployments -n kube-system
+```
+Output: no
+
+
+14. Create a cluster rolebinding
+
+vi clusterrolebinding.yml
+
+
+15. Apply the created rolebinding on cluster
+```
+kubectl apply -f clusterrolebinding.yml
+```
+
+16. Now perform Step 13.
+
+You should see as "yes" 
+
+Now you can do everything in the cluster.
