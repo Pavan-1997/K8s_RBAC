@@ -15,7 +15,10 @@ With RBAC we can add constraints to access kubernetes resources. For example we 
 
 There are 3 important concept in RBAC.
 
-- Subject : Users, groups or service accounts.
+- Subject : Subjects are nothing but a group of users, services, or team making an attempt at Kubernetes API. It defines what operations a user, service, or a group can perform.
+    - Users: These are global, and meant for humans or processes living outside the cluster.
+    - Groups: Set of users.
+    - Service Accounts: Kubernetes uses service accounts to authenticate and authorize requests by pods to the Kubernetes API server. These are namespaced and meant for intra-cluster processes running inside pods.
 - Resources : Kubernetes API objects which we will operate on.
 - Verbs : The operations which we want to do with our resources.
 
@@ -34,3 +37,9 @@ RoleBinding:
 - RoleBinding may reference any Role in the same namespace.
 After you create a binding, you cannot change the Role or ClusterRole that it refers to. If you do want to change the roleRef for a binding, you need to remove the binding object and create a replacement
 
+ClusterRoleBinding:
+
+- ClusterRole and ClusterRoleBinding function like Role and RoleBinding, except they have wider scope.
+- RoleBinding grants permissions within a specific namespace, whereas a ClusterRoleBinding grants access cluster-wide and to multiple namespaces.
+- ClusterRoleBinding is binding or associating a ClusterRole with a Subject (users, groups, or service accounts).
+  
