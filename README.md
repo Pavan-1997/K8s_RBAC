@@ -13,7 +13,7 @@ With RBAC we can add constraints to access kubernetes resources. For example we 
 - Roles are namespaced, meaning Roles work within the constraints of a namespace. It would default to the default namespace if none was specified.
 - After creating a Role, you assign it to a user or group of users by creating a RoleBinding.
 
-There are 3 important concept in RBAC.
+There are 3 important concepts in RBAC.
 
 - Subject : Subjects are nothing but a group of users, services, or team making an attempt at Kubernetes API. It defines what operations a user, service, or a group can perform.
     - Users: These are global, and meant for humans or processes living outside the cluster.
@@ -49,11 +49,12 @@ Few key points:
 - RBAC is related to security
 
 - They can be divided the types of management:
+  ```
 	- Users (If having a K8s cluster locally in Minikube or Kind out of the box we get admin access by default, Kubernetes Adminstrator in production will define access for dev, qe)
 	- Service Accounts (Managing the access for the services in the cluster like malicious pod deleting configmaps,secrets or content related to API server) (These are the YAML files)
 	- Roles/Cluster Roles
 	- Role binding/ Cluster role binding 
-	
+  ```
 - API Server act as OAuth Server
 	
 - K8s doesn't deal with user management but offloads it to Identity Providers (AWS-IAM, AZURE, Openshift)
