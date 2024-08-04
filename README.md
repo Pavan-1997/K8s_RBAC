@@ -176,3 +176,74 @@ kubectl apply -f clusterrolebinding.yml
 	   Now you can do everything in the cluster.
 
 ![image](https://github.com/Pavan-1997/K8s_RBAC/assets/32020205/1a606d32-5c38-47d7-914c-1924a6a17b64)
+
+---
+
+## ANOTHER VERSION FOR RBAC
+
+1. Check if you can create pods
+```
+kubectl auth can-i create pods
+```
+
+2. Check your identity
+```
+kubectl auth whoami
+```
+
+3. Shortened alias for the same command:
+```
+k auth can-i create po
+```
+
+4. Check if a specific user (e.g., pavan) can create pods:
+```
+kubectl auth can-i create pods --as pavan
+```
+![image](https://github.com/user-attachments/assets/73e67386-f3a2-4e56-b28a-02c9fced5d7d)
+
+
+5. Apply the `role2.yml` and `role-binding2.yml`
+```
+k apply -f role2.yml
+k apply -f role-binding2.yml
+```
+
+6. Check again if a specific user (e.g., pavan) can create pods:
+```
+kubectl auth can-i create pods --as pavan
+```
+![image](https://github.com/user-attachments/assets/0469180a-b809-4d20-bbf8-c4b38f85f0d6)
+
+7. Now Generate the csr key and file
+```
+openssl genrsa -out pavan1.key 2048
+```
+```
+openssl req -new -key pavan.key -out pavan.csr -subj "/CN=pavan"
+```
+8. Create a new user entry named pavan in your kubeconfig file, using the provided client key and certificate
+```
+k config set credentials pavan --client-key=pavan.key --client-certificate=pavan.crt
+```
+
+9. Now set the context for the user pavan
+```
+ k config get-contexts
+```
+![image](https://github.com/user-attachments/assets/9eeccbc9-0884-4af4-bf21-44ca295dbe29)
+
+```
+k config set-context pavan --cluster=kind-pavantest --user=pavan
+```
+```
+ k config get-contexts
+```
+![image](https://github.com/user-attachments/assets/7d1c87a4-35d9-41a1-b0fe-78a57c60d5a4)
+
+10. Set the context to the user pavan
+```
+k config use-context pavan
+```
+
+
